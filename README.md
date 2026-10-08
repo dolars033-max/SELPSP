@@ -33,6 +33,15 @@ Oyuncu oyun oturumlarıyla XP kazanır. İlk oyun açılışında **İlk Adım**
 
 Oyun bazlı ayrıntılı kupa listeleri için sonraki aşamada PSP oyun kimliği tabanlı bir kupa veritabanı ve çevrimiçi başarı sistemi eklenecektir.
 
+## Sürümler
+
+### Selpsp Emu PC — v1.20.4-selpsp.1
+
+- Platform: Linux/SDL3 PC
+- Kaynak taban sürümü: `v1.20.4-2501-gbd04d064a4`
+- Selpsp değişiklikleri: modern sol navigasyon dashboard’u, kupa/XP sistemi, Selpsp Performance HUD ve yeniden tasarlanmış açılış ekranı
+- Yayın dosyası: GitHub Releases üzerindeki `SelpspEmu-PC-v1.20.4-selpsp.1-linux-x64.tar.gz`
+
 ## Derleme
 
 ```bash
