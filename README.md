@@ -25,6 +25,10 @@ Selpsp’nin masaüstü launcher’ı PPSSPP’nin klasik üst sekme + sağ men�
 
 ![Selpsp modern dashboard](docs/selpsp-modern-sidebar-preview.png)
 
+### Selpsp Android dokunmatik kontrolü
+
+Android sürümünde klasik PPSSPP sanal tuş kasaları yerine Selpsp’ye özel koyu, yarı saydam ve neon kenarlı kontrol skin’i kullanılır. Sol analog/D-pad, sağ aksiyon tuşları, omuz tuşları ve çoklu dokunma desteği mobil cihazlarda varsayılan olarak aktiftir.
+
 ### Kupalar ve seviye sistemi
 
 Oyuncu oyun oturumlarıyla XP kazanır. İlk oyun açılışında **İlk Adım**, onuncu oturumda **Koleksiyoncu** kupası kazanılır. XP profil seviyesine eklenir ve kupa mağazasındaki profil temaları/rozetler için kullanılabilir.
@@ -46,7 +50,7 @@ Oyun bazlı ayrıntılı kupa listeleri için sonraki aşamada PSP oyun kimliği
 
 - Uygulama sürümü: `1.0`
 - Android paket adı ve launcher markası: Selpsp Emu
-- APK, GitHub Releases üzerindeki 1.0 sürümüne eklenecektir.
+- APK: [SelpspEmu-1.0-android.apk](https://github.com/dolars033-max/SELPSP/releases/download/v1.0.0/SelpspEmu-1.0-android.apk)
 
 ## Derleme
 

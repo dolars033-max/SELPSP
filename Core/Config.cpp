@@ -955,7 +955,8 @@ static const ConfigSetting touchControlSettings[] = {
 };
 
 static const ConfigSetting controlSettings[] = {
-	ConfigSetting("HapticFeedback", SETTING(g_Config, bHapticFeedback), false, CfgFlag::PER_GAME),
+	// Selpsp Android default: tactile, transparent virtual PSP controls.
+	ConfigSetting("HapticFeedback", SETTING(g_Config, bHapticFeedback), true, CfgFlag::PER_GAME),
 	
 #if PPSSPP_PLATFORM(WINDOWS)
 	ConfigSetting("IgnoreWindowsKey", SETTING(g_Config, bIgnoreWindowsKey), false, CfgFlag::PER_GAME),
@@ -999,7 +1000,7 @@ static const ConfigSetting controlSettings[] = {
 	ConfigSetting("DisableDpadDiagonals", SETTING(g_Config, bDisableDpadDiagonals), false, CfgFlag::PER_GAME),
 	ConfigSetting("GamepadOnlyFocused", SETTING(g_Config, bGamepadOnlyFocused), false, CfgFlag::PER_GAME),
 	ConfigSetting("TouchButtonStyle", SETTING(g_Config, iTouchButtonStyle), 1, CfgFlag::PER_GAME),
-	ConfigSetting("TouchButtonOpacity", SETTING(g_Config, iTouchButtonOpacity), 65, CfgFlag::PER_GAME),
+	ConfigSetting("TouchButtonOpacity", SETTING(g_Config, iTouchButtonOpacity), 58, CfgFlag::PER_GAME),
 	ConfigSetting("TouchButtonHideSeconds", SETTING(g_Config, iTouchButtonHideSeconds), 8, CfgFlag::PER_GAME),
 	ConfigSetting("AutoCenterTouchAnalog", SETTING(g_Config, bAutoCenterTouchAnalog), false, CfgFlag::PER_GAME),
 	ConfigSetting("StickyTouchDPad", SETTING(g_Config, bStickyTouchDPad), false, CfgFlag::PER_GAME),

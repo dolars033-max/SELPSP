@@ -1019,10 +1019,10 @@ GamepadEmuView::GamepadEmuView(const TouchControlConfig &config, float xres, flo
 
 	const int halfW = xres / 2;
 
-	const ImageID roundImage = g_Config.iTouchButtonStyle ? ImageID("I_ROUND_LINE") : ImageID("I_ROUND");
+	const ImageID roundImage = g_Config.iTouchButtonStyle ? ImageID("I_SELPSP_TOUCH_ROUND") : ImageID("I_ROUND");
 	const ImageID rectImage = g_Config.iTouchButtonStyle ? ImageID("I_RECT_LINE") : ImageID("I_RECT");
-	const ImageID shoulderImage = g_Config.iTouchButtonStyle ? ImageID("I_SHOULDER_LINE") : ImageID("I_SHOULDER");
-	const ImageID stickImage = g_Config.iTouchButtonStyle ? ImageID("I_STICK_LINE") : ImageID("I_STICK");
+	const ImageID shoulderImage = g_Config.iTouchButtonStyle ? ImageID("I_SELPSP_TOUCH_SHOULDER") : ImageID("I_SHOULDER");
+	const ImageID stickImage = g_Config.iTouchButtonStyle ? ImageID("I_SELPSP_TOUCH_STICK") : ImageID("I_STICK");
 	const ImageID stickBg = g_Config.iTouchButtonStyle ? ImageID("I_STICK_BG_LINE") : ImageID("I_STICK_BG");
 
 	auto addPSPButton = [this, buttonLayoutParams](int buttonBit, const char *key, ImageID bgImg, ImageID bgDownImg, ImageID img, const ConfigTouchPos &touch, ButtonOffset off = { 0, 0 }) -> PSPButton * {
@@ -1090,7 +1090,7 @@ GamepadEmuView::GamepadEmuView(const TouchControlConfig &config, float xres, flo
 		rTrigger->FlipImageH(true);
 
 	if (config.touchDpad.show) {
-		const ImageID dirImage = g_Config.iTouchButtonStyle ? ImageID("I_DIR_LINE") : ImageID("I_DIR");
+		const ImageID dirImage = g_Config.iTouchButtonStyle ? ImageID("I_SELPSP_TOUCH_DPAD") : ImageID("I_DIR");
 		Add(new PSPDpad(dirImage, "D-pad", ImageID("I_DIR"), ImageID("I_ARROW"), config.touchDpad.scale, config.fDpadSpacing, buttonLayoutParams(config.touchDpad)));
 	}
 
