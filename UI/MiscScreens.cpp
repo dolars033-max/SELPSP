@@ -452,12 +452,7 @@ void LogoScreen::DrawForeground(UIContext &dc) {
 
 	// PSP-style startup: the animated blue wave is drawn by the background overlay.
 	snprintf(temp, sizeof(temp), "%s", "Selpsp Emu");
-	if (System_GetPropertyBool(SYSPROP_APP_GOLD)) {
-		UI::DrawIconShine(dc, Bounds::FromCenter(bounds.centerX(), startY - 8, 60.0f), 0.7f, true);
-		dc.Draw()->DrawImage(ImageID("I_ICON_GOLD"), bounds.centerX(), startY - 8, 1.2f, 0xFFFFFFFF, ALIGN_CENTER);
-	} else {
-		dc.Draw()->DrawImage(ImageID("I_ICON"), bounds.centerX(), startY - 8, 1.2f, 0xFFFFFFFF, ALIGN_CENTER);
-	}
+		dc.Draw()->DrawImage(ImageID("I_SELPSP_LOGO"), bounds.centerX(), startY - 8, 1.2f, 0xFFFFFFFF, ALIGN_CENTER);
 	dc.SetFontScale(1.0f, 1.0f);
 	dc.SetFontStyle(dc.GetTheme().uiFont);
 	dc.DrawText(temp, bounds.centerX(), startY + 66, textColor, ALIGN_CENTER);
@@ -528,7 +523,7 @@ void CreditsScreen::CreateDialogViews(UI::ViewGroup *parent) {
 	if (System_GetPropertyBool(SYSPROP_APP_GOLD)) {
 		root_->Add(new ShinyIcon(ImageID("I_ICON_GOLD"), new AnchorLayoutParams(WRAP_CONTENT, WRAP_CONTENT, 10, 10, NONE, NONE, false)))->SetScale(1.5f);
 	} else {
-		root_->Add(new ImageView(ImageID("I_ICON"), "", IS_DEFAULT, new AnchorLayoutParams(WRAP_CONTENT, WRAP_CONTENT, 10, 10, NONE, NONE, false)))->SetScale(1.5f);
+		root_->Add(new ImageView(ImageID("I_SELPSP_LOGO"), "", IS_DEFAULT, new AnchorLayoutParams(WRAP_CONTENT, WRAP_CONTENT, 10, 10, NONE, NONE, false)))->SetScale(1.5f);
 	}*/
 
 	constexpr float columnWidth = 265.0f;
@@ -741,11 +736,7 @@ void CreditsScroller::Draw(UIContext &dc) {
 
 	// TODO: This is kinda ugly, done on every frame...
 	char temp[256];
-	if (System_GetPropertyBool(SYSPROP_APP_GOLD)) {
-		snprintf(temp, sizeof(temp), "PPSSPP Gold %s", PPSSPP_GIT_VERSION);
-	} else {
-		snprintf(temp, sizeof(temp), "PPSSPP %s", PPSSPP_GIT_VERSION);
-	}
+		snprintf(temp, sizeof(temp), "Selpsp Emu 1.0");
 	credits[0] = (const char *)temp;
 
 	dc.Begin();

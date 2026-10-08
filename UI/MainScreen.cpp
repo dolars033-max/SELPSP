@@ -262,15 +262,25 @@ constexpr std::string_view getHomebrewUri = "https://www.ppsspp.org/gethomebrew"
 			});
 		}
 
-		trophies->Add(new ItemHeader("KUPA MAĞAZASI"));
-		trophies->Add(new TextView("Kazandığın XP’yi özel profil temaları ve rozetlerde kullan.", FLAG_WRAP_TEXT, false,
-			new LinearLayoutParams(FILL_PARENT, WRAP_CONTENT, Margins(0, 0, 0, 4))));
-		Choice *neonTheme = trophies->Add(new Choice("Neon mavi profil teması", "250 XP", new LinearLayoutParams(FILL_PARENT, WRAP_CONTENT)));
-		neonTheme->OnClick.Add([this](UI::EventParams &) { BuySelpspReward(8, 250, "Neon mavi profil teması"); });
-		Choice *goldBadge = trophies->Add(new Choice("Selpsp altın rozet", "750 XP", new LinearLayoutParams(FILL_PARENT, WRAP_CONTENT)));
-		goldBadge->OnClick.Add([this](UI::EventParams &) { BuySelpspReward(9, 750, "Selpsp altın rozet"); });
-		Choice *legendCard = trophies->Add(new Choice("Efsanevi oyuncu kartı", "1500 XP", new LinearLayoutParams(FILL_PARENT, WRAP_CONTENT)));
-		legendCard->OnClick.Add([this](UI::EventParams &) { BuySelpspReward(10, 1500, "Efsanevi oyuncu kartı"); });
+			trophies->Add(new ItemHeader("KUPA MAĞAZASI"));
+			char wallet[96];
+			snprintf(wallet, sizeof(wallet), "XP CÜZDANI   %d XP", xp);
+			trophies->Add(new ItemHeader(wallet));
+			trophies->Add(new TextView("Kazandığın XP’yi özel profil temaları, rozetler ve profil kartlarında kullan.", FLAG_WRAP_TEXT, false,
+				new LinearLayoutParams(FILL_PARENT, WRAP_CONTENT, Margins(0, 0, 0, 4))));
+		const struct RewardInfo { int bit; const char *name; const char *cost; int costValue; } rewards[] = {
+			{ 8, "Neon mavi profil teması", "250 XP", 250 },
+			{ 9, "Selpsp altın rozet", "750 XP", 750 },
+			{ 10, "Efsanevi oyuncu kartı", "1500 XP", 1500 },
+		};
+		for (const RewardInfo &reward : rewards) {
+			const bool owned = (g_Config.iSelpspTrophyUnlockedMask & (1 << reward.bit)) != 0;
+			Choice *item = trophies->Add(new Choice(owned ? std::string("AÇILDI  •  ") + reward.name : reward.name,
+				owned ? "PROFİLDE AKTİF" : reward.cost, new LinearLayoutParams(FILL_PARENT, WRAP_CONTENT)));
+			item->SetIconRight(owned ? ImageID("I_CHECKMARK") : ImageID("I_SELPSP_LOGO"), 0.55f);
+			item->SetEnabled(!owned);
+			item->OnClick.Add([this, reward](UI::EventParams &) { BuySelpspReward(reward.bit, reward.costValue, reward.name); });
+		}
 
 		tabHolder_->AddTab("Kupalar", ImageID("I_ACHIEVEMENT"), trophies);
 	}
@@ -387,18 +397,7 @@ public:
 				return;
 			}
 
-			std::string versionString = PPSSPP_GIT_VERSION;
-		// Strip the 'v' from the displayed version, and shorten the commit hash.
-		if (versionString.size() > 2) {
-			if (versionString[0] == 'v' && isdigit(versionString[1])) {
-				versionString = versionString.substr(1);
-			}
-			if (CountChar(versionString, '-') == 2) {
-				// Shorten the commit hash.
-				size_t cutPos = versionString.find_last_of('-') + 8;
-				versionString = versionString.substr(0, std::min(cutPos, versionString.size()));
-			}
-		}
+			const std::string versionString = "1.0";
 		dc.Flush();
 
 		const bool tiny = versionString.size() > 10;
@@ -424,8 +423,8 @@ public:
 		bool retval = UI::AnchorLayout::Touch(touch);
 		if (!portrait_ && (touch.flags & TouchInputFlags::DOWN) && bounds_.Contains(touch.x, touch.y) && touch.y >= bounds_.y2() - 20) {
 			auto di = GetI18NCategory(I18NCat::DIALOG);
-			System_CopyStringToClipboard(PPSSPP_GIT_VERSION);
-			g_OSD.Show(OSDType::MESSAGE_INFO, ApplySafeSubstitutions(di->T("Copied to clipboard: %1"), PPSSPP_GIT_VERSION), 0.0f, "copyToClip");
+				System_CopyStringToClipboard("1.0");
+				g_OSD.Show(OSDType::MESSAGE_INFO, ApplySafeSubstitutions(di->T("Copied to clipboard: %1"), "1.0"), 0.0f, "copyToClip");
 			return true;
 		}
 		return retval;
@@ -433,7 +432,7 @@ public:
 
 private:
 	ImageID GetIconID() const {
-		return System_GetPropertyBool(SYSPROP_APP_GOLD) ? ImageID("I_ICON_GOLD") : ImageID("I_ICON");
+			return ImageID("I_SELPSP_LOGO");
 	}
 
 	const bool portrait_;

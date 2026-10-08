@@ -35,12 +35,18 @@ Oyun bazlı ayrıntılı kupa listeleri için sonraki aşamada PSP oyun kimliği
 
 ## Sürümler
 
-### Selpsp Emu PC — v1.20.4-selpsp.1
+### Selpsp Emu 1.0 — PC
 
-- Platform: Linux/SDL3 PC
-- Kaynak taban sürümü: `v1.20.4-2501-gbd04d064a4`
-- Selpsp değişiklikleri: modern sol navigasyon dashboard’u, kupa/XP sistemi, Selpsp Performance HUD ve yeniden tasarlanmış açılış ekranı
-- Yayın dosyası: GitHub Releases üzerindeki `SelpspEmu-PC-v1.20.4-selpsp.1-linux-x64.tar.gz`
+- Platform: Linux/SDL3 x64
+- Modern Selpsp dashboard ve özgün Selpsp logosu
+- Selpsp Performance HUD, kupa/XP sistemi ve kupa mağazası
+- GitHub Releases: [Selpsp Emu 1.0](https://github.com/dolars033-max/SELPSP/releases/tag/v1.0.0)
+
+### Selpsp Emu 1.0 — Android APK
+
+- Uygulama sürümü: `1.0`
+- Android paket adı ve launcher markası: Selpsp Emu
+- APK, GitHub Releases üzerindeki 1.0 sürümüne eklenecektir.
 
 ## Derleme
 

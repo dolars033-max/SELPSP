@@ -123,9 +123,11 @@ android {
 			versionCode = gitVersionCode
 		} else {
 			println("(not using these:) Android Version Name, Code: $gitVersionName $gitVersionCode")
-		}
-		file("versionname.txt").writeText(gitVersionName)
-		file("versioncode.txt").writeText(gitVersionCode.toString())
+			}
+			file("versionname.txt").writeText(gitVersionName)
+			file("versioncode.txt").writeText(gitVersionCode.toString())
+			// Selpsp public app version. Keep the upstream git version for diagnostics only.
+			versionName = "1.0"
 
 		minSdk = 21
 		targetSdk = 37
