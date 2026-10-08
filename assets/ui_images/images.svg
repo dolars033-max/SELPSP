@@ -1620,11 +1620,10 @@
      id="style1-09">
 	.st0{fill:#000000;}
 </style>
-  <g id="I_SELPSP_LOGO">
     <path id="I_SELPSP_LOGO" d="M50 6 L88 28 L88 72 L50 94 L12 72 L12 28 Z" fill="#18c8ff"/>
     <path id="I_SELPSP_LOGO" d="M50 17 L77 33 L77 62 L50 78 L23 62 L23 33 Z" fill="#102b52"/>
     <path id="I_SELPSP_LOGO" d="M34 39 L50 30 L66 39 L66 49 L50 40 L34 49 Z" fill="#72edff"/>
     <path id="I_SELPSP_LOGO" d="M34 54 L50 45 L66 54 L66 64 L50 55 L34 64 Z" fill="#2f7bff"/>
     <path id="I_SELPSP_LOGO" d="M50 30 L57 34 L57 69 L50 73 Z" fill="#ffffff" opacity="0.9"/>
-  </g>
+
 </svg>
